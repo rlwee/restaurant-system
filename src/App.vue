@@ -1,22 +1,42 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <header>
+      <div class="container-fluid header-container">
+        <div class="row justify-content-center header-row-container">
+          <div class="col-lg-10 header-column-container">
+            <ul class="ul-header">
+              <li> <router-link to="/about"> About </router-link>  </li>
+              <li> <router-link to="/products"> Products </router-link> </li>
+              <li> <router-link to="/"> Freddie Angular </router-link> </li>
+              <li>Reservation</li>
+              <li>Contact Us</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:  Roboto, sans-serif, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
 #nav {
-  padding: 30px;
+}
+
+.routerlink{
+  color: black;
+}
+
+.router-link-active{
+  color: black !important;
 }
 
 #nav a {
@@ -27,4 +47,45 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+header{
+  box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25);
+}
+
+.header-container{
+}
+
+.header-row-container{
+}
+
+.header-column-container{
+  /* border: 2px solid black; */
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.ul-header{
+  list-style-type: none;
+  display: flex;
+  margin-bottom: 0;
+}
+
+li{
+  margin: auto;
+  font-size: 14px;
+}
+
+li:nth-child(1),
+li:nth-child(2),
+li:nth-child(4),
+li:nth-child(5){
+  position: relative;
+  top: 2px ;
+}
+
+.ul-header > li:nth-child(3){
+  font-family: 'Pacifico', cursive;
+  font-size: 35px;
+}
+
 </style>
