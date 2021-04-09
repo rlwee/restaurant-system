@@ -17,24 +17,17 @@
             />
           </div>
           <div class="right-content-details">
+            <!-- {{ JSON.stringify(product.productName, null, 4) }} -->
             <p>{{ product.productDescription }}</p>
-
-            {{ JSON.stringify(product.productName, null, 4) }}
             <form>
               <div>
-                <label for="productDescription">
-                  {{ product.productDescription }}
-                </label>
-                <!-- prettier-ignore -->
-                <input 
-                    type="text" 
-                    id="productDescription" 
-                    v-bind:product="product.productDescription"
-                    v-model="product.productDescription"
-                    >
-              </div>
-              <div>
-                <button>Submit</button>
+                <input
+                  class="modal-input"
+                  type="text"
+                  id="productName"
+                  v-model="productDescription"
+                  v-on:input="updateDescription"
+                />
               </div>
             </form>
 
@@ -52,9 +45,21 @@ export default {
   name: "FoodModal",
 
   data() {
-    return {};
+    return {
+      productName: "",
+      productDescription: "",
+    };
   },
-  methods: {},
+  methods: {
+    updateDescription() {
+      this.updateProductModal(this.productName, this.productDescription);
+    },
+  },
+
+  created() {
+    this.productName = this.product.productName;
+    this.productDescription = this.product.productDescription;
+  },
 
   props: {
     closeModal: {
@@ -66,6 +71,12 @@ export default {
     product: {
       default: () => {},
       type: Object,
+    },
+    updateProductModal: {
+      default: () => {
+        return true;
+      },
+      type: Function,
     },
   },
 };
@@ -175,5 +186,12 @@ export default {
   background: #4aae9b;
   border: 1px solid #4aae9b;
   border-radius: 2px;
+}
+
+form {
+}
+
+.modal-input {
+  border-radius: 15px;
 }
 </style>

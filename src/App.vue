@@ -15,7 +15,6 @@
         </div>
       </div>
     </header>
-
     <router-view />
   </div>
 </template>
@@ -49,6 +48,10 @@
 }
 
 header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 999999999999999;
   box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
 }
 

@@ -17,8 +17,11 @@
       v-if="isModalVisible"
       :close-modal="closeModal"
       :product="product"
+      :update-product-modal="updateProduct"
     >
     </FoodModal>
+
+    <!-- {{ JSON.stringify(product.productDescription, null, 4) }} -->
   </div>
 </template>
 
@@ -34,6 +37,8 @@ export default {
       productSelected: false,
       isActive: false,
       isModalVisible: false,
+      productName: "",
+      productDescription: "",
     };
   },
 
@@ -41,6 +46,12 @@ export default {
     product: {
       default: () => {},
       type: Object,
+    },
+    updateProduct: {
+      default: () => {
+        return true;
+      },
+      type: Function,
     },
   },
 
@@ -58,6 +69,13 @@ export default {
       this.isModalVisible = false;
       console.log("close", this.isModalVisible);
     },
+    updateDescription() {
+      this.updateProduct(this.productName, this.productDescription);
+    },
+  },
+  created() {
+    this.productName = this.product.productName;
+    this.productDescription = this.product.productDescription;
   },
 };
 </script>
